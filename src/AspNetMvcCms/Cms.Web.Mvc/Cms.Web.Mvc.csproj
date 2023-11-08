@@ -8,4 +8,19 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+  <ItemGroup>
+    <Content Remove="Views\Home\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Views\Search\" />
+    <None Remove="Views\Detail\" />
+    <None Remove="Views\Page\" />
+    <None Remove="Views\Auth\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Search\" />
+    <Folder Include="Views\Detail\" />
+    <Folder Include="Views\Page\" />
+    <Folder Include="Views\Auth\" />
+  </ItemGroup>
 </Project>
