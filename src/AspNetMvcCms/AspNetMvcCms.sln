@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Web.Mvc", "Cms.Web.Mvc\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Web.Data", "Cms.Web.Data\Cms.Web.Data.csproj", "{2F52CB57-2A8D-4B1D-97AC-A6429B045954}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cms.Web.Api", "Cms.Web.Api\Cms.Web.Api.csproj", "{0E4E7C42-92EA-4CD9-A9D7-F28CA2E3C717}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Web.Api", "Cms.Web.Api\Cms.Web.Api.csproj", "{0E4E7C42-92EA-4CD9-A9D7-F28CA2E3C717}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
