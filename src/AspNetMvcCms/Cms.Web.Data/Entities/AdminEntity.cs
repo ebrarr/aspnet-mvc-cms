@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cms.Web.Data.Entities
 {
-    public class UserEntity : EntityBase
+    public class AdminEntity : EntityBase
     {
     }
 }

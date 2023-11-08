@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cms.Web.Data.Entities
 {
-    internal class RoleEntity
+    public class RoleEntity : EntityBase
     {
     }
 }
