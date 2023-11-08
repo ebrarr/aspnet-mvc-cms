@@ -9,5 +9,11 @@ namespace Cms.Web.Data
 {
     public class AppDbContext : DbContext
     {
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+        }
+
+        //Buraya dbsetler, roller, konfigürasyonlar gelecek
+
     }
 }

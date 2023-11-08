@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Cms.Web.Data;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace Cms.Web.Mvc.Controllers
+namespace Cms.Web.Api.Controllers
 {
     public class AuthController : Controller
     {
-        // GET: /<controller>/
+        private readonly AppDbContext _dbContext;
+        public AuthController(AppDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public IActionResult Register()
         {
             return View();
@@ -25,4 +24,3 @@ namespace Cms.Web.Mvc.Controllers
         }
     }
 }
-

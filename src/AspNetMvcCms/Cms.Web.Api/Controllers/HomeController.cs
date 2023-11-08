@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Cms.Web.Mvc.Controllers
+namespace Cms.Web.Api.Controllers
 {
-    public class DoctorsController : Controller
+    public class HomeController : Controller
     {
         public IActionResult Index()
         {
