@@ -1,26 +1,25 @@
-﻿using Cms.Web.Data;
+﻿using Cms.Web.Api.Models;
+using Cms.Web.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cms.Web.Api.Controllers
 {
-    public class AuthController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AuthController : ControllerBase
     {
         private readonly AppDbContext _dbContext;
+
         public AuthController(AppDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-        public IActionResult Register()
+        
+       public IActionResult Login([FromBody] LoginModel loginModel)
         {
-            return View();
+            throw new NotImplementedException();
         }
-        public IActionResult Login()
-        {
-            return View();
-        }
-        public IActionResult ForgotPassword()
-        {
-            return View();
-        }
+        
     }
 }
