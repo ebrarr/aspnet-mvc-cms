@@ -5,6 +5,7 @@ using IdentityModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -52,6 +53,37 @@ namespace Cms.Web.Api.Controllers
                 Token = token
             });
         }
+
+        private string GetJwt(UserEntity user)
+        {
+            var claims = new List<Claim>
+           {
+               new Claim(JwtClaimTypes.Name, user.Name),
+               new Claim(JwtClaimTypes.FamilyName, user.LastName),
+               new Claim(JwtClaimTypes.Email, user.Email),
+               new Claim(JwtClaimTypes.Role, user.Role.Name),
+           };
+
+            string secret = GetSecretKeyFromConfiguration();
+            string issuer = GetIssuerFromConfiguration();
+            string audience = GetAudienceFromConfiguration();
+        }
+
+        private string GetAudienceFromConfiguration()
+        {
+            throw new NotImplementedException();
+        }
+
+        private string GetIssuerFromConfiguration()
+        {
+            throw new NotImplementedException();
+        }
+
+        private string GetSecretKeyFromConfiguration()
+        {
+            throw new NotImplementedException();
+        }
+
         private string HashString(string input)
         {
             using var sha256 = SHA256.Create();
@@ -59,14 +91,7 @@ namespace Cms.Web.Api.Controllers
             return Convert.ToBase64String(bytes);
         }
 
-        private object GetJwt(UserEntity user)
-        {
-           var claims = new List<Claim>
-           {
-               new Claim(JwtClaimTypes.Names,user.Name),
-
-           }
-        }
+        
     
     }
 }
