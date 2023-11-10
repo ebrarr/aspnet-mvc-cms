@@ -5,6 +5,8 @@ using IdentityModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -16,10 +18,12 @@ namespace Cms.Web.Api.Controllers
     public class AuthController : ControllerBase
     {
         private readonly AppDbContext _dbContext;
+        private readonly IConfiguration _configuration;
 
-        public AuthController(AppDbContext dbContext)
+        public AuthController(AppDbContext dbContext, IConfiguration configuration)
         {
             _dbContext = dbContext;
+            _configuration = configuration;
         }
 
         [HttpPost("login")]
@@ -67,21 +71,33 @@ namespace Cms.Web.Api.Controllers
             string secret = GetSecretKeyFromConfiguration();
             string issuer = GetIssuerFromConfiguration();
             string audience = GetAudienceFromConfiguration();
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
+            var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var jwtSecurityToken = new JwtSecurityToken(
+                issuer: issuer,
+                audience: audience,
+                claims: claims,
+                expires: DateTime.Now.AddMinutes(30),
+                signingCredentials: credentials);
+
+            return new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
         }
 
         private string GetAudienceFromConfiguration()
         {
-            throw new NotImplementedException();
+            return _configuration["Jwt : Audience"];
         }
 
         private string GetIssuerFromConfiguration()
         {
-            throw new NotImplementedException();
+            return _configuration["Jwt : Issuer"];
         }
 
         private string GetSecretKeyFromConfiguration()
         {
-            throw new NotImplementedException();
+            return _configuration["Jwt : Secret"];
         }
 
         private string HashString(string input)
