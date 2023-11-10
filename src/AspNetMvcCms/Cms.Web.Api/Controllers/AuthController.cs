@@ -1,6 +1,7 @@
 ﻿using Cms.Web.Api.Models;
 using Cms.Web.Data;
 using Cms.Web.Data.Entities;
+using IdentityModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +29,9 @@ namespace Cms.Web.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = _dbContext.Users.FirstOrDefault(x => x.Email == loginModel.Email);
+            var user = _dbContext.Users
+                .Include(u => u.Role)
+                .FirstOrDefault(x => x.Email == loginModel.Email);
 
             if (user is null)
             {
@@ -58,7 +61,11 @@ namespace Cms.Web.Api.Controllers
 
         private object GetJwt(UserEntity user)
         {
-            throw new NotImplementedException();
+           var claims = new List<Claim>
+           {
+               new Claim(JwtClaimTypes.Names,user.Name),
+
+           }
         }
     
     }
