@@ -18,6 +18,7 @@ namespace Cms.Web.Mvc.Controllers
             return View();
         }
       
+        
 
         public IActionResult Privacy()
         {

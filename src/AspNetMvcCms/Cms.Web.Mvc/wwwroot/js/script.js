@@ -1,10 +1,3 @@
-/**
- * WEBSITE: https://themefisher.com
- * TWITTER: https://twitter.com/themefisher
- * FACEBOOK: https://www.facebook.com/themefisher
- * GITHUB: https://github.com/themefisher/
- */
-
 (function ($) {
 	'use strict';
 
@@ -15,7 +8,7 @@
 				height: 'toggle'
 			}, 300);
 		});
-  }
+	}
 
 	// scroll to top button
 	$(window).on('scroll', function () {
@@ -26,12 +19,12 @@
 		}
 	});
 	// scroll-to-top
-  $('.scroll-top-to').on('click', function () {
-    $('body,html').animate({
-      scrollTop: 0
-    }, 500);
-    return false;
-  });
+	$('.scroll-top-to').on('click', function () {
+		$('body,html').animate({
+			scrollTop: 0
+		}, 500);
+		return false;
+	});
 
 	$('.portfolio-single-slider').slick({
 		infinite: true,
@@ -48,34 +41,34 @@
 		slidesToScroll: 6,
 		autoplaySpeed: 6000,
 		responsive: [{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 6,
-					slidesToScroll: 6,
-					infinite: true,
-					dots: true
-				}
-			},
-			{
-				breakpoint: 900,
-				settings: {
-					slidesToShow: 4,
-					slidesToScroll: 4
-				}
-			}, {
-				breakpoint: 600,
-				settings: {
-					slidesToShow: 4,
-					slidesToScroll: 4
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2
-				}
+			breakpoint: 1024,
+			settings: {
+				slidesToShow: 6,
+				slidesToScroll: 6,
+				infinite: true,
+				dots: true
 			}
+		},
+		{
+			breakpoint: 900,
+			settings: {
+				slidesToShow: 4,
+				slidesToScroll: 4
+			}
+		}, {
+			breakpoint: 600,
+			settings: {
+				slidesToShow: 4,
+				slidesToScroll: 4
+			}
+		},
+		{
+			breakpoint: 480,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2
+			}
+		}
 
 		]
 	});
@@ -91,34 +84,34 @@
 		verticalSwiping: true,
 		autoplaySpeed: 6000,
 		responsive: [{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					infinite: true,
-					dots: true
-				}
-			},
-			{
-				breakpoint: 900,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}, {
-				breakpoint: 600,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
+			breakpoint: 1024,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1,
+				infinite: true,
+				dots: true
 			}
+		},
+		{
+			breakpoint: 900,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		}, {
+			breakpoint: 600,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		},
+		{
+			breakpoint: 480,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		}
 
 		]
 	});
@@ -132,34 +125,34 @@
 		autoplay: true,
 		autoplaySpeed: 6000,
 		responsive: [{
-				breakpoint: 1024,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2,
-					infinite: true,
-					dots: true
-				}
-			},
-			{
-				breakpoint: 900,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			}, {
-				breakpoint: 600,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
-			},
-			{
-				breakpoint: 480,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1
-				}
+			breakpoint: 1024,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2,
+				infinite: true,
+				dots: true
 			}
+		},
+		{
+			breakpoint: 900,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		}, {
+			breakpoint: 600,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		},
+		{
+			breakpoint: 480,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		}
 
 		]
 	});
@@ -191,8 +184,8 @@
 				});
 			});
 		}
-  }
-  $(window).on('scroll', function () {
+	}
+	$(window).on('scroll', function () {
 		counter();
 	});
 
