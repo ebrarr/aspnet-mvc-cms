@@ -189,11 +189,7 @@
 		counter();
 	});
 
-	$(document).ready(function () {
-		// Sayfa yüklendiðinde, URL'ye göre aktif menü öðesini belirle
-		var path = window.location.pathname;
-		$('.navbar-nav a[href="' + path + '"]').parent().addClass('active');
-	});
+
 	// Shuffle js filter and masonry
 	if ($('.shuffle-wrapper').length !== 0) {
 		var Shuffle = window.Shuffle;
