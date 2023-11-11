@@ -20,6 +20,22 @@ namespace Cms.Web.Mvc.Controllers
 		{
 			return View();
 		}
+        public IActionResult Doctors() 
+        {
+            return View();
+        }
+        public IActionResult Cardiology() 
+        {
+            return View("Doctor-Single/Cardiology");
+        }
+        public IActionResult Blog() 
+        {
+            return View();
+        }
+		public IActionResult Contact()
+		{
+			return View();
+		}
 
 	}
 }
