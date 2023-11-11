@@ -28,7 +28,27 @@ namespace Cms.Web.Mvc.Controllers
         {
             return View("Doctor-Single/Cardiology");
         }
-        public IActionResult Blog() 
+		public IActionResult Dental()
+		{
+			return View("Doctor-Single/Dental");
+		}
+		public IActionResult Neurology()
+		{
+			return View("Doctor-Single/Neurology");
+		}
+		public IActionResult Medicine()
+		{
+			return View("Doctor-Single/Medicine");
+		}
+		public IActionResult Pediatric()
+		{
+			return View("Doctor-Single/Pediatric");
+		}
+		public IActionResult Traumatology()
+		{
+			return View("Doctor-Single/Traumatology");
+		}
+		public IActionResult Blog() 
         {
             return View();
         }
@@ -36,6 +56,10 @@ namespace Cms.Web.Mvc.Controllers
 		{
 			return View();
 		}
+        public IActionResult Appointment() 
+        { 
+            return View();
+        }
 
 	}
 }
