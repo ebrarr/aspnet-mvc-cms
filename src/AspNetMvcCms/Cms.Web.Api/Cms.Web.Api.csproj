@@ -15,7 +15,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cms.Web.Data\Cms.Web.Data.csproj" />
+    <ProjectReference Include="..\Cms.Web.Models\Cms.Web.Models.csproj" />
     <ProjectReference Include="..\Cms.Web.Shared\Cms.Web.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

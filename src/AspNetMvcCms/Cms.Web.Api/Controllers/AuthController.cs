@@ -4,10 +4,11 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using Cms.Web.Api.Models;
+
 using Cms.Web.Api.Services.TokenService;
 using Cms.Web.Data;
 using Cms.Web.Data.Entities;
+using Cms.Web.Models.Dto;
 using IdentityModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -32,7 +33,7 @@ namespace Cms.Web.Api.Controllers
         }
 
 		[HttpPost("login")]
-		public IActionResult Login([FromBody] LoginModel loginModel)
+		public IActionResult Login([FromBody] LoginDto loginModel)
 		{
 			if (!ModelState.IsValid)
 			{
@@ -69,7 +70,7 @@ namespace Cms.Web.Api.Controllers
 		}
 
 		[HttpPost("register")]
-		public async Task<IActionResult> Register([FromBody] RegisterModel registerModel)
+		public async Task<IActionResult> Register([FromBody] RegisterDto registerModel)
 		{
 			if (!ModelState.IsValid) 
 			{ 

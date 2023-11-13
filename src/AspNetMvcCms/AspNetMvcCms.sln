@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Web.Data", "Cms.Web.Dat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Web.Api", "Cms.Web.Api\Cms.Web.Api.csproj", "{0E4E7C42-92EA-4CD9-A9D7-F28CA2E3C717}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cms.Web.Shared", "Cms.Web.Shared\Cms.Web.Shared.csproj", "{CFDDDF9F-2371-4A77-8ED0-5D668B9D3D44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Web.Shared", "Cms.Web.Shared\Cms.Web.Shared.csproj", "{CFDDDF9F-2371-4A77-8ED0-5D668B9D3D44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cms.Web.Models", "Cms.Web.Models\Cms.Web.Models.csproj", "{97F42EFB-A613-4209-9FEF-04FD6DF4C750}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{CFDDDF9F-2371-4A77-8ED0-5D668B9D3D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFDDDF9F-2371-4A77-8ED0-5D668B9D3D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFDDDF9F-2371-4A77-8ED0-5D668B9D3D44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97F42EFB-A613-4209-9FEF-04FD6DF4C750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97F42EFB-A613-4209-9FEF-04FD6DF4C750}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97F42EFB-A613-4209-9FEF-04FD6DF4C750}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97F42EFB-A613-4209-9FEF-04FD6DF4C750}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

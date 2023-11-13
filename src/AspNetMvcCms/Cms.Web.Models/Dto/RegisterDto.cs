@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cms.Web.Api.Models
+namespace Cms.Web.Models.Dto
 {
-    public class RegisterModel
+    public class RegisterDto
     {
         public int RoleId { get; set; }
 

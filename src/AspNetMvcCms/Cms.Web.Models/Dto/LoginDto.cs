@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Cms.Web.Api.Models
+namespace Cms.Web.Models.Dto
 {
-    public class LoginModel
+    public class LoginDto
     {
         [Required, MinLength(1), EmailAddress]
         public string Email { get; set; }

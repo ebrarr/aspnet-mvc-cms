@@ -23,4 +23,7 @@
     <Folder Include="Views\Page\" />
     <Folder Include="wwwroot\plugins\slick-carousel\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cms.Web.Models\Cms.Web.Models.csproj" />
+  </ItemGroup>
 </Project>
