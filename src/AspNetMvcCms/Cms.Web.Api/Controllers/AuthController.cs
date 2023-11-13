@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -17,7 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Cms.Web.Api.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class AuthController : ControllerBase
 	{
@@ -67,6 +66,36 @@ namespace Cms.Web.Api.Controllers
 			{
 				Token = tokenResult.Data
 			});
+		}
+
+		[HttpPost("register")]
+		public async Task<IActionResult> Register([FromBody] RegisterModel registerModel)
+		{
+			if (!ModelState.IsValid) 
+			{ 
+				return BadRequest(ModelState); 
+			}
+
+			var user = await _dbContext.Users.SingleOrDefaultAsync(x => x.Email == registerModel.Email);
+
+			if(user is not null)
+			{
+				return BadRequest("Bu emaiil adresi kullanılmaktadır.");
+			}
+
+			var newUser = new UserEntity
+			{
+				Name = registerModel.Name,
+				LastName = registerModel.LastName,
+				Email = registerModel.Email,
+				PasswordHash = HashString(registerModel.Password),
+				RoleId = registerModel.RoleId,
+			};
+
+			_dbContext.Users.Add(newUser);
+			await _dbContext.SaveChangesAsync();
+
+			return Ok();
 		}
 		private string HashString(string input)
 		{
