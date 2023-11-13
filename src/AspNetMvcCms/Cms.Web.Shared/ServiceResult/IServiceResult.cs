@@ -9,7 +9,7 @@ namespace Cms.Web.Shared.ServiceResult
     public interface IServiceResult
     {
         bool IsSuccess { get; }
-        string Message { get; }
+        string? Message { get; }
         int StatusCode { get; }
     }
 
