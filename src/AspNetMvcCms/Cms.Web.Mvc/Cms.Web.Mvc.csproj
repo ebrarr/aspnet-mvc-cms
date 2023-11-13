@@ -21,7 +21,6 @@
     <Folder Include="Views\Search\" />
     <Folder Include="Views\Detail\" />
     <Folder Include="Views\Page\" />
-    <Folder Include="Views\Auth\" />
     <Folder Include="wwwroot\plugins\slick-carousel\" />
   </ItemGroup>
 </Project>
