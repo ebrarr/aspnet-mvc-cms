@@ -1,4 +1,5 @@
-﻿@model Cms.Web.Mvc.Models.LoginViewModel
+﻿@model Cms.Web.Models.Dto.LoginDto
+
 
 <form asp-action="Login" asp-controller="Account" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -19,3 +20,7 @@
         <button type="submit" class="btn btn-primary">Login</button>
     </div>
 </form>
+
+<div class="text-center">
+    <p>Don't have an account? <a asp-action="Register" asp-controller="Account">Register here</a>.</p>
+</div>
