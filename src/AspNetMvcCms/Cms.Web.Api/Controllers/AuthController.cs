@@ -4,12 +4,11 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-
+using System.Threading.Tasks;
 using Cms.Web.Api.Services.TokenService;
 using Cms.Web.Data;
 using Cms.Web.Data.Entities;
 using Cms.Web.Models.Dto;
-using IdentityModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,20 +16,20 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace Cms.Web.Api.Controllers
 {
-    [Route("api/[controller]")]
+	[Route("api/[controller]")]
 	[ApiController]
 	public class AuthController : ControllerBase
 	{
 		private readonly AppDbContext _dbContext;
 		private readonly IConfiguration _configuration;
-        private readonly ITokenService _tokenService;
+		private readonly ITokenService _tokenService;
 
-        public AuthController(AppDbContext dbContext, IConfiguration configuration, ITokenService tokenService)
+		public AuthController(AppDbContext dbContext, IConfiguration configuration, ITokenService tokenService)
 		{
 			_dbContext = dbContext;
 			_configuration = configuration;
-            _tokenService = tokenService;
-        }
+			_tokenService = tokenService;
+		}
 
 		[HttpPost("login")]
 		public IActionResult Login([FromBody] LoginDto loginModel)
@@ -58,7 +57,7 @@ namespace Cms.Web.Api.Controllers
 
 			var tokenResult = _tokenService.CreateToken(user);
 
-			if(!tokenResult.IsSuccess)
+			if (!tokenResult.IsSuccess)
 			{
 				return StatusCode(tokenResult.StatusCode, tokenResult.Message);
 			}
@@ -69,35 +68,64 @@ namespace Cms.Web.Api.Controllers
 			});
 		}
 
-		[HttpPost("register")]
-		public async Task<IActionResult> Register([FromBody] RegisterDto registerModel)
-		{
-			if (!ModelState.IsValid) 
-			{ 
-				return BadRequest(ModelState); 
-			}
+[HttpPost("register")]
+public async Task<IActionResult> Register([FromBody] RegisterDto registerModel)
+{
+    if (!ModelState.IsValid)
+    {
+        return BadRequest(ModelState);
+    }
 
-			var user = await _dbContext.Users.SingleOrDefaultAsync(x => x.Email == registerModel.Email);
+    var user = await _dbContext.Users.SingleOrDefaultAsync(x => x.Email == registerModel.Email);
 
-			if(user is not null)
-			{
-				return BadRequest("Bu emaiil adresi kullanılmaktadır.");
-			}
+    if (user is not null)
+    {
+        return BadRequest("Bu email adresi kullanılmaktadır.");
+    }
 
-			var newUser = new UserEntity
-			{
-				Name = registerModel.Name,
-				LastName = registerModel.LastName,
-				Email = registerModel.Email,
-				PasswordHash = HashString(registerModel.Password),
-				RoleId = registerModel.RoleId,
-			};
+    // Yeni kullanıcı oluşturuluyor
+    var newUser = new UserEntity
+    {
+        Name = registerModel.Name,
+        LastName = registerModel.LastName,
+        Email = registerModel.Email,
+        PasswordHash = HashString(registerModel.Password),
+        // Otomatik olarak RoleId'yi 1 olarak ayarla
+        RoleId = 1 // veya istediğiniz başka bir değer
+    };
 
-			_dbContext.Users.Add(newUser);
-			await _dbContext.SaveChangesAsync();
+    _dbContext.Users.Add(newUser);
 
-			return Ok();
-		}
+    try
+    {
+        await _dbContext.SaveChangesAsync();
+    }
+    catch (DbUpdateException ex)
+    {
+        Console.WriteLine(ex);
+
+        if (ex.InnerException != null)
+        {
+            Console.WriteLine(ex.InnerException);
+        }
+
+        return StatusCode(500, "Kullanıcı kaydı başarısız oldu.");
+    }
+
+    var tokenResult = _tokenService.CreateToken(newUser);
+
+    if (!tokenResult.IsSuccess)
+    {
+        return StatusCode(tokenResult.StatusCode, tokenResult.Message);
+    }
+
+    return Ok(new
+    {
+        Token = tokenResult.Data
+    });
+}
+
+
 		private string HashString(string input)
 		{
 			using var sha256 = SHA256.Create();

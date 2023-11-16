@@ -7,21 +7,22 @@ using System.Threading.Tasks;
 
 namespace Cms.Web.Data.Entities
 {
-    public class UserEntity : EntityBase
-    {
-        public int RoleId { get; set; }
+	public class UserEntity : EntityBase
+	{
+		public int RoleId { get; set; }
 
-        [Required, MaxLength(50)]
-        public string Name { get; set; }
+		[Required, MaxLength(50)]
+		public string Name { get; set; }
 
-        [Required, MaxLength(50)]
-        public string LastName { get; set; }
+		[Required, MaxLength(50)]
+		public string LastName { get; set; }
 
-        [Required, EmailAddress]
-        public string Email { get; set; }
+		[Required, EmailAddress]
+		public string Email { get; set; }
 
-        [Required]
-        public string PasswordHash { get; set; }
-        public RoleEntity Role { get; set; }
-    }
+		[Required]
+		public string PasswordHash { get; set; }
+
+		public RoleEntity Role { get; set; }
+	}
 }
