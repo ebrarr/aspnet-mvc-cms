@@ -18,15 +18,27 @@ namespace Cms.Web.Api.Services.TokenService
         }
         public IServiceResult<string> CreateToken(UserEntity user)
         {
-            var claims = new List<Claim>
-            {
-                new Claim(JwtClaimTypes.Name, user.Name),
-                new Claim(JwtClaimTypes.FamilyName, user.LastName),
-                new Claim(JwtClaimTypes.Email, user.Email),
-                new Claim(JwtClaimTypes.Role, user.Role.Name),
-            };
+			var claims = new List<Claim>
+{
+	new Claim(JwtClaimTypes.Name, user.Name),
+	new Claim(JwtClaimTypes.FamilyName, user.LastName),
+	new Claim(JwtClaimTypes.Email, user.Email),
+};
 
-            string secret = GetSecretKeyFromConfiguration();
+			if (user.Role != null && !string.IsNullOrEmpty(user.Role.Name))
+			{
+				claims.Add(new Claim(JwtClaimTypes.Role, user.Role.Name));
+			}
+			else
+			{
+				// Eğer rol bilgisi yoksa ya da rol adı null/boşsa, bir varsayılan rol ekleyebilirsiniz.
+				// claims.Add(new Claim(JwtClaimTypes.Role, "DefaultRole"));
+				// Veya isteğe bağlı olarak burada bir hata/uyarı mesajı verebilirsiniz.
+				// return BadRequest("Kullanıcının bir rolü bulunmamaktadır.");
+			}
+
+
+			string secret = GetSecretKeyFromConfiguration();
             string issuer = GetIssuerFromConfiguration();
             string audience = GetAudienceFromConfiguration();
 
