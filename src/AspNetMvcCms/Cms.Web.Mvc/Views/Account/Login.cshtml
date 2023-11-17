@@ -1,6 +1,5 @@
 ﻿@model Cms.Web.Models.Dto.LoginDto
 
-
 <form asp-action="Login" asp-controller="Account" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -14,6 +13,11 @@
         <label asp-for="Password" class="control-label"></label>
         <input asp-for="Password" class="form-control" />
         <span asp-validation-for="Password" class="text-danger"></span>
+
+        <!-- Şifre Hatırlatma Bağlantısı -->
+        <small class="form-text">
+            <a asp-action="ForgotPassword" asp-controller="Account">Forgot your password?</a>
+        </small>
     </div>
 
     <div class="form-group">
