@@ -17,8 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 namespace Cms.Web.Api.Controllers
 {
 	[Route("api/[controller]")]
-	[ApiController]
-	public class AuthController : ControllerBase
+        	public class AuthController : ControllerBase
 	{
 		private readonly AppDbContext _dbContext;
 		private readonly IConfiguration _configuration;

@@ -9,7 +9,7 @@ namespace Cms.Web.Data.Entities
     public class VisitTableEntity : EntityBase
     {
         public int AppointmentId { get; set; }
-        public int DoctorId { get; set; }
+        public int RoleId { get; set; }
         public int UserId { get; set; }
         public string Reasons { get; set; }
         public string Diagnosis { get; set; }

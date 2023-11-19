@@ -10,8 +10,9 @@ namespace Cms.Web.Data.Entities
 	public class UserEntity : EntityBase
 	{
 		public int RoleId { get; set; }
+        public int? PolyclinicId { get; set; }
 
-		[Required, MaxLength(50)]
+        [Required, MaxLength(50)]
 		public string Name { get; set; }
 
 		[Required, MaxLength(50)]

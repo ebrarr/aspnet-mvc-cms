@@ -9,8 +9,7 @@ namespace Cms.Web.Data.Entities
 {
     public class BlogPostEntity : EntityBase
     {
-        public int DoctorId { get; set; }
-        public int AdminId { get; set; }
+        public int RoleId { get; set; }
 
         [Required, MaxLength(50)]
         public string Name { get; set; }

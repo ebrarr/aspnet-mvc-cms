@@ -9,7 +9,8 @@ namespace Cms.Web.Data.Entities
 {
     public class PolyclinicEntity : EntityBase
     {
-        public int DoctorId { get; set; }
+        public int RoleId { get; set; }
+        public int DoctorPolyclinicRelationId { get; set; }
 
         [Required, MaxLength(50)]
         public string Name { get; set; }

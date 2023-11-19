@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Cms.Web.Data.Entities
 {
-    public class ContactFormEntity : EntityBase
+    public class DoctorPolyclinicRelationEntity : EntityBase
     {
+        public int RoleId { get; set; }
+        public int PolyclinicId { get; set; }
+
     }
 }
