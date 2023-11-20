@@ -24,6 +24,10 @@ namespace Cms.Web.Data.Entities
 		[Required]
 		public string PasswordHash { get; set; }
 
-		public RoleEntity Role { get; set; }
+        [Required]
+        public string? PasswordReset { get; set; }
+        [Required]
+        public DateTime? ResetTokenExpires { get; set; }
+        public RoleEntity Role { get; set; }
 	}
 }

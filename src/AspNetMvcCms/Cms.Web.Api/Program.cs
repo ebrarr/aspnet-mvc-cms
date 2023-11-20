@@ -1,6 +1,7 @@
 
 using Cms.Web.Api.Services.TokenService;
 using Cms.Web.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 });
 
 builder.Services.AddScoped<ITokenService, TokenService>();
+
+builder.Services.Configure<IdentityOptions>(options =>
+    options.SignIn.RequireConfirmedEmail = true
+);
+
+builder.Services.Configure<DataProtectionTokenProviderOptions>(options => options.TokenLifespan = TimeSpan.FromHours(10));
 
 var app = builder.Build();
 
