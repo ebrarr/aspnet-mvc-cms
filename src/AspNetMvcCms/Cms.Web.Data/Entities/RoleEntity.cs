@@ -9,8 +9,7 @@ namespace Cms.Web.Data.Entities
 {
 	public class RoleEntity : EntityBase
 	{
-		[Key] // Primary key annotation ekleyin
-		public int Id { get; set; }
+		
 
 		[Required, MaxLength(10)]
 		public string Name { get; set; }
@@ -18,7 +17,7 @@ namespace Cms.Web.Data.Entities
         [Required, MaxLength(50)]
         public string LastName { get; set; }
 
-        [Required, EmailAddress]
+        [Required, EmailAddress, MaxLength(100)] // MaxLength değerini artırabilirsiniz
         public string Email { get; set; }
 
         [Required]

@@ -39,13 +39,13 @@ namespace Cms.Web.Data
 		{
 			base.OnModelCreating(modelBuilder);
 
-			// RoleEntity için veri ekleme
-			modelBuilder.Entity<RoleEntity>().HasData(
-				new RoleEntity { Id = 1, Name = "Patient" },
-				new RoleEntity { Id = 2, Name = "Doctor" },
-				new RoleEntity { Id = 3, Name = "Admin" },
-                new RoleEntity { Id = 4, Name = "Secretary" }
-                );
-		}
+            // RoleEntity için veri ekleme
+            modelBuilder.Entity<RoleEntity>().HasData(
+      new RoleEntity { Id = 1, Name = "Patient", LastName = "Patient", Email = "patient@example.com", PasswordHash = "hashedpassword" },
+      new RoleEntity { Id = 2, Name = "Doctor", LastName = "Doctor", Email = "doctor@example.com", PasswordHash = "hashedpassword" },
+      new RoleEntity { Id = 3, Name = "Admin", LastName = "Admin", Email = "admin@example.com", PasswordHash = "hashedpassword" },
+      new RoleEntity { Id = 4, Name = "Secretary", LastName = "Secretary", Email = "secretary@example.com", PasswordHash = "hashedpassword" }
+  );
+        }
 	}
 }

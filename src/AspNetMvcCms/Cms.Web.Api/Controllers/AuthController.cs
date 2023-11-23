@@ -152,10 +152,15 @@ namespace Cms.Web.Api.Controllers
                 return BadRequest("Geçersiz Token.");
             }
 
-            HashString("");
-            user.PasswordHash = "";
+            // Önce yeni şifreyi hash'le
+            string newPasswordHash = HashString(resetPasswordDto.NewPassword);
+
+            // Sonra user nesnesinin şifre özelliğini güncelle
+            user.PasswordHash = newPasswordHash;
+
+            // DbContext'i kaydet
             await _dbContext.SaveChangesAsync();
-             
+
             return Ok("Şifreniz başarıyla güncellendi.");
         }
 

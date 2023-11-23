@@ -10,7 +10,7 @@ namespace Cms.Web.Data
 {
     public abstract class EntityBase
     {
-        //[Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
     }
 }

@@ -14,5 +14,7 @@ namespace Cms.Web.Models.Dto
 
         [Required, MinLength(1)]
         public string Password { get; set; }
+        [Required, MinLength(1)]
+        public string NewPassword { get; set; } // Yeni şifreyi ekleyin
     }
 }
