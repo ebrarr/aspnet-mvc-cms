@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Web.Api", "Cms.Web.Api\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Web.Shared", "Cms.Web.Shared\Cms.Web.Shared.csproj", "{CFDDDF9F-2371-4A77-8ED0-5D668B9D3D44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cms.Web.Models", "Cms.Web.Models\Cms.Web.Models.csproj", "{97F42EFB-A613-4209-9FEF-04FD6DF4C750}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cms.Web.Models", "Cms.Web.Models\Cms.Web.Models.csproj", "{97F42EFB-A613-4209-9FEF-04FD6DF4C750}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
