@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,16 +11,31 @@ namespace Cms.Web.Mvc
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             ConfigureServices(builder.Services);
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
+            Configure(app, builder.Environment);
+
+            app.Run();
+        }
+
+        public static void ConfigureServices(IServiceCollection services)
+        {
+            // Diðer servis konfigürasyonlarý
+            services.AddControllersWithViews();
+            services.AddHttpClient(); // HTTP istemcisi ekleyin
+        }
+
+        public static void Configure(WebApplication app, IHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -34,18 +50,10 @@ namespace Cms.Web.Mvc
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            // Admin paneli rotasý
             app.MapControllerRoute(
-                name: "account",
-                pattern: "{controller=Account}/{action=ForgotPassword}");
-
-            app.Run();
-        }
-
-        public static void ConfigureServices(IServiceCollection services)
-        {
-            // Diðer servis konfigürasyonlarý
-            services.AddControllersWithViews();
-            services.AddHttpClient(); // HTTP istemcisi ekleyin
+                name: "admin",
+                pattern: "Admin/{controller=Admin}/{action=Index}/{id?}");
         }
     }
 }
